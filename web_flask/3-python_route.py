@@ -17,7 +17,8 @@ ROUTES:
 -------
     '/': Return: "Hello HBNB"
     '/hbnb': Return: "HBNB"
-    '/c/<text>: Return: "C + <text>"
+    '/c/<text>': Return: "C + <text>"
+    '/python/<text>': Return: "Python + <text>", default text="is cool"
 '''
 from flask import Flask
 
