@@ -64,3 +64,7 @@ class FileStorage:
                 del self.__objects[key]
             except Exception:
                 pass
+
+    def close(self):
+        """Close that reaload"""
+        self.reload()
