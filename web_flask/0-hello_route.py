@@ -1,6 +1,18 @@
 #!/usr/bin/python3
 from flask import Flask
-"""That starts a Flask web application:"""
+'''
+MODULE NAME:
+------------
+    0-hello_route
+
+MODULE DESCRIPTION:
+-------------------
+    That starts a Flask web application
+
+MODULE ATTRIBUTES:
+------------------
+    None
+'''
 app = Flask(__name__)
 
 
