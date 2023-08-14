@@ -1,20 +1,27 @@
 #!/usr/bin/python3
-from flask import Flask
+
 '''
 MODULE NAME:
-0-hello_route
+------------
+    0-hello_route
 
 MODULE DESCRIPTION:
-That starts a Flask web application
+-------------------
+    That starts a Flask web application
 
 MODULE ATTRIBUTES:
-- None
+------------------
+    None
 '''
+from flask import Flask
+
+
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
+    """Funtion that return a string"""
     return ("Hello HBNB!")
 
 
