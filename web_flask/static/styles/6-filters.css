@@ -60,6 +60,10 @@ section.filters > button:hover {
     overflow: scroll;
 }
 
+.popover::-webkit-scrollbar {
+	width: 6px;
+  }
+
 .popover, .popover ul {
     list-style-type: none;
 }
@@ -73,7 +77,7 @@ section.filters > button:hover {
 
 .popover h2 {
     margin-top: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .locations > .popover > li {
