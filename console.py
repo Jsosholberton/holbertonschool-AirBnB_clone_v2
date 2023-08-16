@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         elif len(args) > 1:
-            args = args[1:].replace("\\", "")
+            args = args[1:]
             for items in args:
                 key, value = items.replace('"', '').split('=')
                 value = value.replace("_", " ")
