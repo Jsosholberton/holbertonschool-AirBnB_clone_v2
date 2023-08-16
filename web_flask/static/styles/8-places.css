@@ -109,6 +109,10 @@ article h2 {
 	height: 50px;
 }
 
+.guest_icon:hover, .bed_icon:hover, .bath_icon:hover {
+	opacity: 0.9;
+}
+
 .bed_icon {
 	display: inline-block;
 	background-image: url("../images/icon_bed.png");
