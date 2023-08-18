@@ -62,7 +62,7 @@ section.filters > button:hover {
 
 .popover::-webkit-scrollbar {
 	width: 6px;
-  }
+}
 
 .popover, .popover ul {
     list-style-type: none;

@@ -27,35 +27,51 @@ dict_instances = {"State": State, "Amenity": Amenity,
                   "Place": Place,"City": City}
 
 app = Flask(__name__)
-
-@app.route('/hbnb/<inst>/<id>', strict_slashes=False)
+@app.route('/hbnb/<pag>', strict_slashes=False)
+@app.route('/hbnb/<pag>/<inst>/<id>/', strict_slashes=False)
 @app.route('/hbnb', strict_slashes=False)
-def state_list(inst=None, id=None):
+def state_list(inst=None, id=None, pag=1):
     places = storage.all(Place)
     states = storage.all(State)
     amenities = storage.all(Amenity)
     cities = storage.all(City)
+    filter_inst = None
 
     if inst == 'State' and id:
-        state = states["State." + id]
-        if state:
+        filter_inst = states["State." + id]
+        if filter_inst:
             places = {key: place for key, place in places.items()\
                       if place.cities.state_id == id}
     elif inst == 'City' and id:
-        city = cities["City." + id]
-        if city:
+        filter_inst = cities["City." + id]
+        if filter_inst:
             places = {key: place for key, place in places.items()\
                       if place.city_id == id}
     elif inst == "Amenity":
-        amty = amenities["Amenity." + id]
-        if amty:
+        filter_inst = amenities["Amenity." + id]
+        if filter_inst:
             places = {key: place for key, place in places.items()\
                       if any(amenity.id == id for amenity in place.amenities)}
+
+    pag = int(pag)
+
+    if pag == 0:
+        pag = 1
+
+    last = pag * 4
+    firts = last - 4
+
+    if len(places) > 4:
+        last = pag * 4
+        sorted_items = sorted(places.items(), key=lambda x: x[1].name)
+        places = dict(sorted_items[firts:last])
 
     return render_template('100-hbnb.html',
                            states=states,
                            amenities=amenities,
-                           places=places)
+                           places=places,
+                           filter=filter_inst,
+                           pag=pag)
 
 
 @app.teardown_appcontext
